@@ -1,14 +1,12 @@
-### sumary
-_Teste..._
+### Resumo
+_Escreva um pequeno resumo..._
 
-### Datalhos
-_Teste..._
-
-### Refact
---
+### Datalhes
+_Escreva detalhes da tarefa..._
 
 ### Checks 
-- [ ] Teste change
-- [ ] Aprovado
+- [ ] Usei a task no trello como base
+- [ ] Fiz os testes de usabilidade
+- [ ] Projeto está rodando
   
 
