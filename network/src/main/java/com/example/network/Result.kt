@@ -1,7 +1,6 @@
 package com.example.network
 
 import retrofit2.Response
-import java.lang.Exception
 import java.net.HttpURLConnection
 
 sealed class Result<out Response> {
