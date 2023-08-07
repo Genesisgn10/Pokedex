@@ -46,4 +46,6 @@ dependencies {
     def koin_version = "3.4.3"
     implementation "io.insert-koin:koin-android:$koin_version"
 
+    implementation project(":network")
+
 }
