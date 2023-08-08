@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="color_primary">#DC0A2D</color>
+    <color name="color_accent_bug">#A7B723</color>
+    <color name="color_accent_dark">#75574C</color>
+    <color name="color_accent_dragon">#7037FF</color>
+    <color name="color_accent_eletric">#F9CF30</color>
+    <color name="color_accent_fairy">#E69EAC</color>
+    <color name="color_accent_fighting">#C12239</color>
+    <color name="color_accent_fire">#F57D31</color>
+    <color name="color_accent_flying">#A891EC</color>
+    <color name="color_accent_ghost">#70559B</color>
+    <color name="color_accent_normal">#AAA67F</color>
+    <color name="color_accent_grass">#74CB48</color>
+    <color name="color_accent_ground">#DEC16B</color>
+    <color name="color_accent_ice">#9AD6DF</color>
+    <color name="color_accent_poison">#A43E9E</color>
+    <color name="color_accent_psychic">#FB5584</color>
+    <color name="color_accent_rock">#B69E31</color>
+    <color name="color_accent_steel">#B7B9D0</color>
+    <color name="color_accent_water">#6493EB</color>
+    <color name="color_white">#FFFFFFFF</color>
+    <color name="color_secondary_dark">#212121</color>
+    <color name="color_secondary_medium">#666666</color>
+    <color name="color_secondary_ligth">#E0E0E0</color>
+    <color name="color_backgorund">#EFEFEF</color>
 </resources>
