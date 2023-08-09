@@ -5,10 +5,16 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.pokedex.databinding.ActivityMainBinding
 
+import androidx.activity.ComponentActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Handle the splash screen transition.
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
