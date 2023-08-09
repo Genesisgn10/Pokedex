@@ -2,22 +2,15 @@ package com.example.pokedex
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import com.example.pokedex.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        // Handle the splash screen transition.
+        installSplashScreen()
 
-        binding.btnPokedex.setOnClickListener {
-            Toast.makeText(this, "Você clicou no botão",
-                Toast.LENGTH_SHORT).show()
-        }
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
     }
 }
