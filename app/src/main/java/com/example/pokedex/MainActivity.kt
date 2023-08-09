@@ -2,6 +2,7 @@ package com.example.pokedex
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.pokedex.databinding.ActivityMainBinding
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btnPokedex.setOnClickListener {
-            Toast.makeText(this, "Voçê clicou no botão",
+            Toast.makeText(this, "Você clicou no botão",
                 Toast.LENGTH_SHORT).show()
         }
     }
