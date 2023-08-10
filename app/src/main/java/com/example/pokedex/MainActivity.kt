@@ -5,10 +5,21 @@ import android.os.Bundle
 import android.widget.ImageView
 import coil.load
 import coil.transform.CircleCropTransformation
+import android.widget.Toast
+import com.example.pokedex.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Handle the splash screen transition.
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         val imageView = findViewById<ImageView>(R.id.imageView)
@@ -16,6 +27,15 @@ class MainActivity : AppCompatActivity() {
             crossfade(true)
             placeholder(R.drawable.ic_launcher_foreground)
             transformations(CircleCropTransformation())
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.btnPokedex.setOnClickListener {
+            Toast.makeText(this, "Voçê clicou no botão",
+                Toast.LENGTH_SHORT).show()
+
         }
     }
 }
