@@ -8,6 +8,7 @@ import coil.transform.CircleCropTransformation
 import android.widget.Toast
 import com.example.pokedex.databinding.ActivityMainBinding
 import androidx.activity.ComponentActivity
+import com.example.pokedex.databinding.ActivityMainBinding
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 
@@ -15,10 +16,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Handle the splash screen transition.
+        //splash screen transition.
         installSplashScreen()
-
         super.onCreate(savedInstanceState)
+
 
         setContentView(R.layout.activity_main)
 
@@ -37,5 +38,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
 
         }
+
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
