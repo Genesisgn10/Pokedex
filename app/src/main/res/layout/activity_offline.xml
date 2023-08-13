@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textColor="@color/color_secondary_dark"
             android:text="Você está sem conexão com a internet!"
             tools:layout_editor_absoluteY="456dp" />
 
