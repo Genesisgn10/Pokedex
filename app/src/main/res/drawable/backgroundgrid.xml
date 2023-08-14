@@ -1,10 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <gradient
-        android:type="linear"
-        android:angle="90"
-        android:startColor="@color/color_secondary_ligth"
-        android:endColor="@color/color_white"/>
-
-</shape>
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="104dp"
+    android:height="44dp"
+    android:viewportWidth="104"
+    android:viewportHeight="44"
+    >
+    <group>
+        <clip-path
+            android:pathData="M7 0H97C100.866 0 104 3.13401 104 7V37C104 40.866 100.866 44 97 44H7C3.13401 44 0 40.866 0 37V7C0 3.13401 3.13401 0 7 0Z"
+            />
+        <path
+            android:pathData="M0 0V44H104V0"
+            android:fillColor="#AD2121"
+            />
+    </group>
+</vector>

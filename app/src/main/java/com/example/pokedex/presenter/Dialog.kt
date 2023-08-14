@@ -1,4 +1,4 @@
-package com.example.pokedex
+package com.example.pokedex.presenter
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
