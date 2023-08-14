@@ -2,15 +2,32 @@ package com.example.pokedex
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import com.example.pokedex.databinding.ActivityMainBinding
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        // Handle the splash screen transition.
-        installSplashScreen()
 
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        //splash screen transition.
+        installSplashScreen()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setSupportActionBar(binding.toolbar.myToolbar)
+        setContentView(binding.root)
+
+        binding.toolbar.floatingActionButton.setOnClickListener {
+            showDialog()
+        }
     }
+
+    private fun showDialog() {
+        val fragmentManager = supportFragmentManager
+        val newFragment = Dialog()
+
+        newFragment.show(fragmentManager, "dialog")
+    }
+
 }
