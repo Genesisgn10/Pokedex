@@ -10,6 +10,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">24sp</item>
+        <item name="color">@color/color_secondary_dark</item>
     </style>
     
     <style name="subtitle1">
@@ -17,6 +18,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">14sp</item>
+        <item name="color">@color/color_secondary_dark</item>
     </style>
 
     <style name="subtitle2">
@@ -24,6 +26,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">12sp</item>
+        <item name="color">@color/color_secondary_dark</item>
     </style>
 
     <style name="subtitle3">
@@ -31,6 +34,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">10sp</item>
+        <item name="color">@color/color_secondary_dark</item>
     </style>
 
     <style name="body1">
@@ -38,6 +42,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">14sp</item>
+        <item name="color">@color/color_secondary_dark</item>
     </style>
 
     <style name="body2">
@@ -45,6 +50,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">12sp</item>
+        <item name="color">@color/color_secondary_dark</item>
     </style>
 
     <style name="body3">
@@ -52,6 +58,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">10sp</item>
+        <item name="color">@color/color_secondary_dark</item>
     </style>
 
     <style name="Caption">
@@ -59,6 +66,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">8sp</item>
+        <item name="color">@color/color_secondary_dark</item>
+    </style>
+
+    <style name="background_offline">
+        <item name="color">@color/color_white</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
     </style>
 
 </resources>
