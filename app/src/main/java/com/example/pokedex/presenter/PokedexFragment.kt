@@ -9,29 +9,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.databinding.FragmentPokedexBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokedexFragment : Fragment() {
 
     private lateinit var binding: FragmentPokedexBinding
 
+    val viewModel: PokedexViewModel by viewModel()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.pokedex.observe(viewLifecycleOwner) {
+            populatePokedex(it)
+        }
+
+        viewModel.getPokedex()
+
+    }
+
+    private fun populatePokedex(pokedexModel: PokedexModel) {
         val grid = GridLayoutManager(context, 3)
-        val list = listOf(
-            "Bulbassauro 1",
-            "Bulbassauro 2",
-            "Bulbassauro 3",
-            "Bulbassaur 4",
-            "bulbassaur 5"
-        )
-        val adapter = AdapterGridList(list)
+        val adapter = AdapterGridList(pokedexModel.results)
 
         binding.rvPokemonlist.layoutManager = grid
         binding.rvPokemonlist.adapter = adapter
 
         binding.rvPokemonlist.addItemDecoration(GridSpacingItemDecoration(3, 20, false))
-
     }
 
     override fun onCreateView(
@@ -46,9 +50,18 @@ class PokedexFragment : Fragment() {
     }
 }
 
-class GridSpacingItemDecoration(private val spanCount: Int, private val spacing: Int, private val includeEdge: Boolean) : RecyclerView.ItemDecoration() {
+class GridSpacingItemDecoration(
+    private val spanCount: Int,
+    private val spacing: Int,
+    private val includeEdge: Boolean
+) : RecyclerView.ItemDecoration() {
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         val position = parent.getChildAdapterPosition(view)
         val column = position % spanCount
 

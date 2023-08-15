@@ -1,5 +1,5 @@
 package com.example.network
 
 class BaseResponse<Data>(
-    val pokemons : List<Data>
+    val pokedex : Data
 )

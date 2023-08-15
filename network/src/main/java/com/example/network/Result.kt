@@ -3,21 +3,21 @@ package com.example.network
 import retrofit2.Response
 import java.net.HttpURLConnection
 
-sealed class Result<out Response> {
-    data class Success<out T>(val data: T) : Result<T>()
-    data class Error(val exception: Int) : Result<Nothing>()
+sealed class Output<out Response> {
+    data class Success<Response> (val value : Response): Output<Response>()
+    data class Failure(val statusCode: Int): Output<Nothing>()
 }
 
-fun <R : Any > Response<R>.parseResponse(): Result<R> {
+fun <R : Any > Response<R>.parseResponse(): Output<R> {
     if (isSuccessful){
         val body = body()
 
         if (body != null){
-            return Result.Success(body)
+            return Output.Success(body)
         }
     } else {
-        return Result.Error(exception = code())
+        return Output.Failure(code())
     }
 
-    return Result.Error(HttpURLConnection.HTTP_INTERNAL_ERROR)
+    return Output.Failure(HttpURLConnection.HTTP_INTERNAL_ERROR)
 }
