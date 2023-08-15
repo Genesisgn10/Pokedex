@@ -9,5 +9,6 @@ data class PokedexModel(
 
 data class PokemonModel(
     val name: String,
-    val url: String
+    val url: String,
+    var photo : String = ""
 )

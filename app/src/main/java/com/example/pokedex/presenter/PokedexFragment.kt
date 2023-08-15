@@ -26,6 +26,8 @@ class PokedexFragment : Fragment() {
 
         viewModel.getPokedex()
 
+
+
     }
 
     private fun populatePokedex(pokedexModel: PokedexModel) {

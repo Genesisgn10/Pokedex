@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.decode.SvgDecoder
 import coil.load
+
 import com.example.pokedex.R
 
 class AdapterGridList(private val pokemons: List<PokemonModel>) :
@@ -26,6 +28,7 @@ class AdapterGridList(private val pokemons: List<PokemonModel>) :
     override fun onBindViewHolder(holder: ViewHolderGridList, position: Int) {
         val item = pokemons[position]
         holder.bind(item)
+
     }
 }
 
@@ -37,7 +40,11 @@ class ViewHolderGridList(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(pokemon: PokemonModel) {
         tvname.text = pokemon.name
-        ic.load(pokemon.url)
+        ic.load(pokemon.photo)
+        val s = ic.context.createSvgImageLoader()
+        ic.load(pokemon.photo) {
+            decoderFactory { result, options, _ -> SvgDecoder(result.source, options) }
+        }
     }
 
 }

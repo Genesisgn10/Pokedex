@@ -14,10 +14,19 @@ class PokedexRepositoryIpm(private val api: PokedexApi) : PokedexRepository {
             is Output.Failure -> throw GetPokedexException()
         }
     }
+
+    override suspend fun photo(id: String): OfficialArtworkSprite? {
+        val respose = api.getPokemon(id).parseResponse()
+        return when (respose) {
+            is Output.Success -> respose.value.sprites.other.dream_world
+            is Output.Failure -> throw GetPokedexException()
+        }
+    }
 }
 
 interface PokedexRepository {
     suspend fun getPokedex(): Pokedex
+    suspend fun photo(id : String) : OfficialArtworkSprite?
 }
 
 class GetPokedexException : Exception()

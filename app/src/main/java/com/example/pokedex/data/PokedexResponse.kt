@@ -15,6 +15,15 @@ data class PokemonResponse(
     val url: String
 )
 
+
+data class OtherSprites(
+    val dream_world: OfficialArtworkSprite?,
+)
+
+data class OfficialArtworkSprite(
+    val front_default: String?,
+    val front_female: String?
+)
 fun PokedexResponse.toPokedex() = Pokedex(
     count = this.count,
     next = this.next,

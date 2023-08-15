@@ -1,7 +1,7 @@
 package com.example.pokedex.domain
 
+import com.example.pokedex.data.OfficialArtworkSprite
 import com.example.pokedex.data.PokedexRepository
-import com.example.pokedex.presenter.PokedexModel
 
 class GetPokedex(private val repository: PokedexRepository) : GetPokedexUseCase {
     override suspend fun invoke(): Pokedex = try {
@@ -10,10 +10,16 @@ class GetPokedex(private val repository: PokedexRepository) : GetPokedexUseCase 
         throw Ex()
     }
 
+    override suspend fun get(name: String): OfficialArtworkSprite? {
+        return repository.photo(name)
+    }
+
 }
 
 interface GetPokedexUseCase {
     suspend operator fun invoke(): Pokedex
+
+    suspend fun get(name: String): OfficialArtworkSprite?
 }
 
 class Ex() : Exception()

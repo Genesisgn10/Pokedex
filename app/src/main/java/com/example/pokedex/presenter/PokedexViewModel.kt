@@ -14,9 +14,16 @@ class PokedexViewModel(private val useCase: GetPokedexUseCase) : ViewModel() {
     val pokedex = _pokedex as LiveData<PokedexModel>
 
     fun getPokedex() {
-        val s = "dsd"
         viewModelScope.launch {
-            _pokedex.postValue(useCase.invoke().asPokedexModel())
+
+            val result = useCase.invoke().asPokedexModel()
+
+            result.results.map {
+                val s = useCase.get(it.name)
+                it.photo = s?.front_default.toString()
+            }
+
+            _pokedex.postValue(result)
         }
     }
 }
