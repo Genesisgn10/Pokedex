@@ -8,18 +8,17 @@ import java.lang.Exception
 
 class PokedexRepositoryIpm(private val api: PokedexApi) : PokedexRepository {
     override suspend fun getPokedex(): Pokedex {
-       val t =  api.getPokemon2("1").parseResponse()
-        val respose = api.getPokedex().parseResponse()
-        return when (respose) {
-            is Output.Success -> respose.value.toPokedex()
+        val response = api.getPokedex().parseResponse()
+        return when (response) {
+            is Output.Success -> response.value.toPokedex()
             is Output.Failure -> throw GetPokedexException()
         }
     }
 
     override suspend fun photo(id: String): OfficialArtworkSprite? {
-        val respose = api.getPokemon(id).parseResponse()
-        return when (respose) {
-            is Output.Success -> respose.value.sprites.other.dream_world
+        val response = api.getPokemon(id).parseResponse()
+        return when (response) {
+            is Output.Success -> response.value.sprites.other.dream_world
             is Output.Failure -> throw GetPokedexException()
         }
     }
@@ -27,7 +26,7 @@ class PokedexRepositoryIpm(private val api: PokedexApi) : PokedexRepository {
 
 interface PokedexRepository {
     suspend fun getPokedex(): Pokedex
-    suspend fun photo(id : String) : OfficialArtworkSprite?
+    suspend fun photo(id: String): OfficialArtworkSprite?
 }
 
 class GetPokedexException : Exception()
