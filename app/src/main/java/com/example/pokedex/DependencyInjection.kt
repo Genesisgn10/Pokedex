@@ -18,6 +18,6 @@ val appModule = module {
 
     factory<GetPokedexUseCase> { GetPokedex(repository = get()) }
 
-    single { PokedexViewModel(get()) }
+    factory { PokedexViewModel(get()) }
 
 }
