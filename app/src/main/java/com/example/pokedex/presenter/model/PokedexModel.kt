@@ -1,4 +1,4 @@
-package com.example.pokedex.presenter
+package com.example.pokedex.presenter.model
 
 data class PokedexModel(
     val count: Int,

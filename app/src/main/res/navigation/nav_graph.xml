@@ -7,7 +7,17 @@
 
     <fragment
         android:id="@+id/pokedexFragment"
-        android:name="com.example.pokedex.presenter.PokedexFragment"
+        android:name="com.example.pokedex.presenter.fragment.PokedexFragment"
         android:label="fragment_pokedex"
-        tools:layout="@layout/fragment_pokedex" />
+        tools:layout="@layout/fragment_pokedex" >
+        <action
+            android:id="@+id/action_pokedexFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.pokedex.presenter.fragment.DetailFragment"
+        android:label="fragment_pokedex"
+        tools:layout="@layout/detail_fragment" />
 </navigation>

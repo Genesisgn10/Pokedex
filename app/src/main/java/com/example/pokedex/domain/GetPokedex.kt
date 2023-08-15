@@ -10,7 +10,7 @@ class GetPokedex(private val repository: PokedexRepository) : GetPokedexUseCase 
         throw Ex()
     }
 
-    override suspend fun get(name: String): OfficialArtworkSprite? {
+    override suspend fun getPhoto(name: String): OfficialArtworkSprite? {
         return repository.photo(name)
     }
 
@@ -19,7 +19,7 @@ class GetPokedex(private val repository: PokedexRepository) : GetPokedexUseCase 
 interface GetPokedexUseCase {
     suspend operator fun invoke(): Pokedex
 
-    suspend fun get(name: String): OfficialArtworkSprite?
+    suspend fun getPhoto(name: String): OfficialArtworkSprite?
 }
 
 class Ex() : Exception()

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.pokedex.databinding.ActivityMainBinding
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.isVisible
+import com.example.pokedex.presenter.fragment.Dialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +23,10 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.floatingActionButton.setOnClickListener {
             showDialog()
         }
+    }
+
+    fun showToolbar(isVisible: Boolean) {
+        binding.toolbar.myToolbar.isVisible = isVisible
     }
 
     private fun showDialog() {

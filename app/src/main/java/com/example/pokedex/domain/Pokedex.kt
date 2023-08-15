@@ -1,7 +1,7 @@
 package com.example.pokedex.domain
 
-import com.example.pokedex.presenter.PokedexModel
-import com.example.pokedex.presenter.PokemonModel
+import com.example.pokedex.presenter.model.PokedexModel
+import com.example.pokedex.presenter.model.PokemonModel
 
 data class Pokedex(
     val count: Int,

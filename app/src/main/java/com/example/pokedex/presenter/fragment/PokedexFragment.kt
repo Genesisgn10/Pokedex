@@ -1,4 +1,4 @@
-package com.example.pokedex.presenter
+package com.example.pokedex.presenter.fragment
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -6,28 +6,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.databinding.FragmentPokedexBinding
+import com.example.pokedex.presenter.MainActivity
+import com.example.pokedex.presenter.model.PokedexModel
+import com.example.pokedex.presenter.PokedexViewModel
+import com.example.pokedex.presenter.StateLoading
+import com.example.pokedex.presenter.StateSuccess
+import com.example.pokedex.presenter.adapter.AdapterGridList
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokedexFragment : Fragment() {
 
     private lateinit var binding: FragmentPokedexBinding
 
-    val viewModel: PokedexViewModel by viewModel()
+    private val viewModel: PokedexViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).showToolbar(true)
+
         viewModel.pokedex.observe(viewLifecycleOwner) {
-            populatePokedex(it)
+            when (it) {
+                is StateSuccess -> populatePokedex(it.data)
+                is StateLoading -> showLoading(it.loading)
+                else -> {}
+            }
         }
 
         viewModel.getPokedex()
+    }
 
-
-
+    private fun showLoading(loading: Boolean) {
+        binding.progressBarLarge.isVisible = loading
+        binding.cardPokemon.isVisible = !loading
     }
 
     private fun populatePokedex(pokedexModel: PokedexModel) {

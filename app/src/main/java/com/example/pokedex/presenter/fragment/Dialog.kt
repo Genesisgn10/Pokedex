@@ -1,4 +1,4 @@
-package com.example.pokedex.presenter
+package com.example.pokedex.presenter.fragment
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

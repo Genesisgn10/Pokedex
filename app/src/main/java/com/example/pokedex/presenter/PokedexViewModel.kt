@@ -6,24 +6,39 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.GetPokedexUseCase
 import com.example.pokedex.domain.asPokedexModel
+import com.example.pokedex.presenter.model.PokedexModel
 import kotlinx.coroutines.launch
 
 class PokedexViewModel(private val useCase: GetPokedexUseCase) : ViewModel() {
 
-    private val _pokedex = MutableLiveData<PokedexModel>()
-    val pokedex = _pokedex as LiveData<PokedexModel>
+    private val _pokedex = MutableLiveData<StateResponse<PokedexModel>>()
+    val pokedex = _pokedex as LiveData<StateResponse<PokedexModel>>
 
     fun getPokedex() {
         viewModelScope.launch {
+            _pokedex.value = StateLoading(true)
 
-            val result = useCase.invoke().asPokedexModel()
+            val pokedexModel = useCase.invoke().asPokedexModel()
+            fetchAndSetPokemonPhotos(pokedexModel)
 
-            result.results.map {
-                val s = useCase.get(it.name)
-                it.photo = s?.front_default.toString()
-            }
-
-            _pokedex.postValue(result)
+            _pokedex.value = StateSuccess(pokedexModel)
+            _pokedex.value = StateLoading(false)
         }
     }
+
+    private suspend fun fetchAndSetPokemonPhotos(result: PokedexModel) {
+        result.results.forEach { pokemon ->
+            val photo = useCase.getPhoto(pokemon.name)?.front_default
+            pokemon.photo = photo.toString()
+        }
+    }
+
 }
+
+sealed class StateResponse<T>
+
+open class StateSuccess<T>(val data: T) : StateResponse<T>()
+open class StateError<T>(val errorData: Error? = null) : StateResponse<T>()
+open class StatePaginatingError<T>(val errorData: Error? = null) : StateResponse<T>()
+open class StatePaginatingLoading<T> : StateResponse<T>()
+open class StateLoading<T>(val loading: Boolean) : StateResponse<T>()

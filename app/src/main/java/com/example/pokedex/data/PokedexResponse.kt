@@ -21,9 +21,10 @@ data class OtherSprites(
 )
 
 data class OfficialArtworkSprite(
-    val front_default: String?,
-    val front_female: String?
+    val front_default: String,
+    val front_female: String
 )
+
 fun PokedexResponse.toPokedex() = Pokedex(
     count = this.count,
     next = this.next,
