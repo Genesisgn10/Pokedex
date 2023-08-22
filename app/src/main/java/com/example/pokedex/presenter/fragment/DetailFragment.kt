@@ -43,6 +43,8 @@ class DetailFragment : Fragment() {
 
         val string = args.pokemonId.weight?.toFloat().toString() + " kg"
 
+        binding.tvName.text = args.pokemonId.name
+
         binding.tvWeight.text = string
         val colorToResource = mapOf(
             "green" to PokemonColor.GREEN.colorRes,
