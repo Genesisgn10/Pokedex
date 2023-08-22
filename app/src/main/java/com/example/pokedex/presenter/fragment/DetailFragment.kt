@@ -1,29 +1,24 @@
 package com.example.pokedex.presenter.fragment
 
-import android.annotation.SuppressLint
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.ColorRes
-import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import androidx.palette.graphics.Palette
-import coil.decode.SvgDecoder
-import coil.load
-import com.example.pokedex.R
+import androidx.viewbinding.ViewBinding
 import com.example.pokedex.databinding.DetailFragmentBinding
 import com.example.pokedex.presenter.MainActivity
+import com.example.pokedex.presenter.constants.PokemonColor
+import com.example.pokedex.presenter.model.PokemonModel
+import com.example.utils.loadSvgImage
 
 class DetailFragment : Fragment() {
 
     private lateinit var binding: DetailFragmentBinding
 
     private val args: DetailFragmentArgs by navArgs()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,50 +31,53 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).showToolbar(isVisible = false)
+        setupUI()
+    }
 
-        (activity as MainActivity).showToolbar(false)
+    private fun setupUI() {
+        val pokemonId = args.pokemonId
+        val weightString = pokemonId.weight?.toFloat()?.toString()?.plus(" kg") ?: ""
 
-        args.pokemonId.height
-
-        val string = args.pokemonId.weight?.toFloat().toString() + " kg"
-
-        binding.tvName.text = args.pokemonId.name
-
-        binding.tvWeight.text = string
-        val colorToResource = mapOf(
-            "green" to PokemonColor.GREEN.colorRes,
-            "yellow" to PokemonColor.YELLOW.colorRes,
-            "red" to PokemonColor.RED.colorRes,
-            "blue" to PokemonColor.BLUE.colorRes,
-            "white" to PokemonColor.WHITE.colorRes,
-            "pink" to PokemonColor.RED.colorRes
-        )
-
-        val color = args.pokemonId.color.toString()
-        val colorRes = colorToResource[color]
-
-        colorRes?.let {
-            binding.back.setBackgroundColor(
-                ContextCompat.getColor(requireContext(), it)
-            )
-        }
-
-        binding.imageView.load(args.pokemonId.photo) {
-            decoderFactory { result, options, _ -> SvgDecoder(result.source, options) }
+        with(binding) {
+            bindPokemonInfo(pokemonId, weightString)
+            bindBackgroundColor(pokemonId.color.toString())
+            bindSvgImage(pokemonId.url)
+            imageView.loadSvgImage(pokemonId.url)
         }
     }
 
+    private fun DetailFragmentBinding.bindPokemonInfo(
+        pokemonId: PokemonModel,
+        weightString: String
+    ) {
+        tvName.text = pokemonId.name
+        tvWeight.text = weightString
+    }
 
+    private fun DetailFragmentBinding.bindBackgroundColor(colorString: String) {
+        val colorRes = getColorResourceForColorString(colorString)
+        colorRes?.let { color ->
+            val colorResource = ContextCompat.getColor(root.context, color)
+            back.setBackgroundColor(colorResource)
+        }
+    }
+
+    private fun getColorResourceForColorString(colorString: String): Int? {
+        val colorToResource = mapOf(
+            "green" to PokemonColor.GREEN,
+            "yellow" to PokemonColor.YELLOW,
+            "red" to PokemonColor.RED,
+            "blue" to PokemonColor.BLUE,
+            "white" to PokemonColor.WHITE,
+            "pink" to PokemonColor.PINK
+        )
+
+        return colorToResource[colorString]?.colorRes
+    }
+
+    private fun DetailFragmentBinding.bindSvgImage(url: String) {
+        imageView.loadSvgImage(url)
+    }
 }
 
-enum class PokemonColor(@ColorRes val colorRes: Int) {
-    GREEN(R.color.green),
-    BLUE(R.color.blue),
-    BROWN(R.color.green),
-    GRAY(R.color.green),
-    YELLOW(R.color.yellow),
-    PINK(R.color.green),
-    PURPLE(R.color.green),
-    RED(R.color.red),
-    WHITE(R.color.green),
-}

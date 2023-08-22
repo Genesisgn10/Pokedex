@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.pokedex.databinding.PopupLayoutBinding
 
-class Dialog : DialogFragment() {
+class DialogFragment : DialogFragment() {
 
     private lateinit var binding: PopupLayoutBinding
 

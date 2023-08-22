@@ -1,24 +1,5 @@
 package com.example.network
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
-
-class BaseResponse<Data>(
-    val sprites: Data
-)
-
-class Base<Data>(
-    val other: Data
-)
-
-class Moves<Data>(
-    val move: Data
-)
-
-class BaseStatus<Data>(
-    val stats: List<Data>
-)
-
 data class Move(
     val move: MoveData
 )
@@ -26,15 +7,6 @@ data class Move(
 data class MoveData(
     val name: String,
     val url: String
-)
-
-@JsonClass(generateAdapter = true)
-data class MovesResponse(
-    val moves: List<Move>
-)
-
-data class Sprites(
-    val sprites: Other<PokemonSprites>
 )
 
 class Other<Data>(
@@ -62,11 +34,6 @@ data class InfoPokemon(
     val sprites: Other<PokemonSprites>,
     var specie: PokemonSpecies
 )
-
-data class MoveDetails(
-    val dreamWorld: String
-)
-
 
 data class Stat(
     val baseStat: Int,

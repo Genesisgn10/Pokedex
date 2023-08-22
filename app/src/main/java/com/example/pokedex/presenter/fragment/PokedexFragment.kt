@@ -13,9 +13,9 @@ import com.example.pokedex.databinding.FragmentPokedexBinding
 import com.example.pokedex.presenter.MainActivity
 import com.example.pokedex.presenter.model.PokedexModel
 import com.example.pokedex.presenter.PokedexViewModel
-import com.example.pokedex.presenter.StateLoading
-import com.example.pokedex.presenter.StateSuccess
-import com.example.pokedex.presenter.adapter.AdapterGridList
+import com.example.pokedex.presenter.adapter.Adapter
+import com.example.utils.StateLoading
+import com.example.utils.StateSuccess
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokedexFragment : Fragment() {
@@ -47,7 +47,7 @@ class PokedexFragment : Fragment() {
 
     private fun populatePokedex(pokedexModel: PokedexModel) {
         val grid = GridLayoutManager(context, 3)
-        val adapter = AdapterGridList(pokedexModel.results)
+        val adapter = Adapter(pokedexModel.results)
 
         binding.rvPokemonlist.layoutManager = grid
         binding.rvPokemonlist.adapter = adapter

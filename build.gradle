@@ -1,13 +1,7 @@
 buildscript {
-
     ext.kotlin_version = "1.8.20"
-
-    dependencies {
-        def nav_version = "2.7.0"
-        //classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
-    }
-
 }
+
 
 plugins {
     id 'com.android.application' version '8.0.2' apply false

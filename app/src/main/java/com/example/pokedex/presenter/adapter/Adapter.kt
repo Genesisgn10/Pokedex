@@ -9,14 +9,11 @@ import androidx.cardview.widget.CardView
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import coil.decode.SvgDecoder
-import coil.load
-
 import com.example.pokedex.R
 import com.example.pokedex.presenter.model.PokemonModel
-import com.example.pokedex.presenter.createSvgImageLoader
+import com.example.utils.loadSvgImage
 
-class AdapterGridList(private val pokemons: List<PokemonModel>) :
+class Adapter(private val pokemons: List<PokemonModel>) :
     RecyclerView.Adapter<ViewHolderGridList>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderGridList {
 
@@ -37,25 +34,26 @@ class AdapterGridList(private val pokemons: List<PokemonModel>) :
 }
 
 class ViewHolderGridList(view: View) : RecyclerView.ViewHolder(view) {
-
-    val tvnumber = view.findViewById<TextView>(R.id.tv_numberpokemon)
-    val tvname = view.findViewById<TextView>(R.id.tv_namepokemon)
-    val ic = view.findViewById<ImageView>(R.id.icon_image)
-    val card = view.findViewById<CardView>(R.id.card_item_pokemon)
+    private val tvNumber: TextView = view.findViewById(R.id.tv_numberpokemon)
+    private val tvName: TextView = view.findViewById(R.id.tv_namepokemon)
+    private val iconImage: ImageView = view.findViewById(R.id.icon_image)
+    private val cardItem: CardView = view.findViewById(R.id.card_item_pokemon)
 
     fun bind(pokemon: PokemonModel) {
-        tvname.text = pokemon.name
-        ic.load(pokemon.photo)
-        val s = ic.context.createSvgImageLoader()
-        ic.load(pokemon.photo) {
-            decoderFactory { result, options, _ -> SvgDecoder(result.source, options) }
-        }
-        tvnumber.text = pokemon.id
-        card.setOnClickListener {
-            val bundle = bundleOf("pokemonId" to pokemon)
-            it.findNavController().navigate(R.id.detailFragment, bundle)
-
-        }
+        tvName.text = pokemon.name
+        loadSvgImage(iconImage, pokemon.photo)
+        tvNumber.text = pokemon.id
+        setupCardClickListener(pokemon)
     }
 
+    private fun loadSvgImage(imageView: ImageView, imageUrl: String) {
+        imageView.loadSvgImage(imageUrl)
+    }
+
+    private fun setupCardClickListener(pokemon: PokemonModel) {
+        cardItem.setOnClickListener {
+            val bundle = bundleOf("pokemonId" to pokemon)
+            it.findNavController().navigate(R.id.detailFragment, bundle)
+        }
+    }
 }
