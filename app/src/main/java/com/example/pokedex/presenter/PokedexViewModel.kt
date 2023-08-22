@@ -28,8 +28,13 @@ class PokedexViewModel(private val useCase: GetPokedexUseCase) : ViewModel() {
 
     private suspend fun fetchAndSetPokemonPhotos(result: PokedexModel) {
         result.results.forEach { pokemon ->
-            val photo = useCase.getPhoto(pokemon.name)?.front_default
-            pokemon.photo = photo.toString()
+            val photo = useCase.getPhoto(pokemon.name)
+            pokemon.photo = photo?.sprites?.other?.dream_world?.front_default.toString()
+            pokemon.height = photo?.height
+            pokemon.sprites = photo?.sprites
+            pokemon.weight = photo?.weight
+            pokemon.id = photo?.id.toString()
+            pokemon.color = photo?.specie?.color?.name
         }
     }
 

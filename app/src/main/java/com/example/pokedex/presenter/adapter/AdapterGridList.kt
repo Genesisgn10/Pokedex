@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.decode.SvgDecoder
@@ -49,8 +50,11 @@ class ViewHolderGridList(view: View) : RecyclerView.ViewHolder(view) {
         ic.load(pokemon.photo) {
             decoderFactory { result, options, _ -> SvgDecoder(result.source, options) }
         }
+        tvnumber.text = pokemon.id
         card.setOnClickListener {
-            it.findNavController().navigate(R.id.detailFragment)
+            val bundle = bundleOf("pokemonId" to pokemon)
+            it.findNavController().navigate(R.id.detailFragment, bundle)
+
         }
     }
 

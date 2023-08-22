@@ -17,7 +17,5 @@ data class Pokemon(
 
 fun Pokedex.asPokedexModel() = PokedexModel(
     count = this.count,
-    next = this.next,
-    previous = this.previous,
     results = this.results.map { PokemonModel(name = it.name, url = it.url) }
 )

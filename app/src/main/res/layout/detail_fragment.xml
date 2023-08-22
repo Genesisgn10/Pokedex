@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:id="@+id/back"
     android:layout_height="match_parent"
     android:background="@color/color_accent_grass">
 
@@ -98,6 +99,7 @@
                             app:srcCompat="@drawable/weight" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_weight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -210,7 +212,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="15dp"
                 android:text="Base Stats" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -415,8 +417,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="226dp"
+        android:layout_height="218dp"
         android:layout_marginTop="24dp"
         android:elevation="4dp"
         android:src="@drawable/bulbasaur_seeklogo_com"
