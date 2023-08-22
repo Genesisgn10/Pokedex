@@ -49,7 +49,7 @@ class DetailFragment : Fragment() {
             "yellow" to PokemonColor.YELLOW.colorRes,
             "red" to PokemonColor.RED.colorRes,
             "blue" to PokemonColor.BLUE.colorRes,
-            "white" to PokemonColor.RED.colorRes,
+            "white" to PokemonColor.WHITE.colorRes,
             "pink" to PokemonColor.RED.colorRes
         )
 

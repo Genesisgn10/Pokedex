@@ -10,7 +10,7 @@ import java.lang.Exception
 
 class PokedexRepositoryIpm(private val api: PokedexApi) : PokedexRepository {
     override suspend fun getPokedex(): Pokedex {
-        return when (val response = api.getPokedex(offset = 1, limit = 10).parseResponse()) {
+        return when (val response = api.getPokedex(offset = 0, limit = 12).parseResponse()) {
             is Output.Success -> response.value.toPokedex()
             is Output.Failure -> throw GetPokedexException()
         }
