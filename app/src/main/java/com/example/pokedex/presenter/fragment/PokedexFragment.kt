@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.databinding.FragmentPokedexBinding
 import com.example.pokedex.presenter.MainActivity
-import com.example.pokedex.presenter.model.PokedexModel
 import com.example.pokedex.presenter.PokedexViewModel
 import com.example.pokedex.presenter.adapter.Adapter
+import com.example.pokedex.presenter.model.DetailPokemonModel
 import com.example.utils.StateLoading
 import com.example.utils.StateSuccess
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,9 +45,9 @@ class PokedexFragment : Fragment() {
         binding.cardPokemon.isVisible = !loading
     }
 
-    private fun populatePokedex(pokedexModel: PokedexModel) {
+    private fun populatePokedex(pokedexModel: MutableList<DetailPokemonModel>) {
         val grid = GridLayoutManager(context, 3)
-        val adapter = Adapter(pokedexModel.results)
+        val adapter = Adapter(pokedexModel)
 
         binding.rvPokemonlist.layoutManager = grid
         binding.rvPokemonlist.adapter = adapter

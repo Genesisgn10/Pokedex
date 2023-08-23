@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import androidx.viewbinding.ViewBinding
 import com.example.pokedex.databinding.DetailFragmentBinding
 import com.example.pokedex.presenter.MainActivity
 import com.example.pokedex.presenter.constants.PokemonColor
-import com.example.pokedex.presenter.model.PokemonModel
+import com.example.pokedex.presenter.model.DetailPokemonModel
 import com.example.utils.loadSvgImage
 
 class DetailFragment : Fragment() {
@@ -42,13 +41,12 @@ class DetailFragment : Fragment() {
         with(binding) {
             bindPokemonInfo(pokemonId, weightString)
             bindBackgroundColor(pokemonId.color.toString())
-            bindSvgImage(pokemonId.url)
-            imageView.loadSvgImage(pokemonId.url)
+            bindSvgImage(pokemonId.photo)
         }
     }
 
     private fun DetailFragmentBinding.bindPokemonInfo(
-        pokemonId: PokemonModel,
+        pokemonId: DetailPokemonModel,
         weightString: String
     ) {
         tvName.text = pokemonId.name

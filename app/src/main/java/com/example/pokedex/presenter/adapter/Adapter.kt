@@ -10,10 +10,10 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.R
-import com.example.pokedex.presenter.model.PokemonModel
+import com.example.pokedex.presenter.model.DetailPokemonModel
 import com.example.utils.loadSvgImage
 
-class Adapter(private val pokemons: List<PokemonModel>) :
+class Adapter(private val pokemons: List<DetailPokemonModel>) :
     RecyclerView.Adapter<ViewHolderGridList>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderGridList {
 
@@ -39,7 +39,7 @@ class ViewHolderGridList(view: View) : RecyclerView.ViewHolder(view) {
     private val iconImage: ImageView = view.findViewById(R.id.icon_image)
     private val cardItem: CardView = view.findViewById(R.id.card_item_pokemon)
 
-    fun bind(pokemon: PokemonModel) {
+    fun bind(pokemon: DetailPokemonModel) {
         tvName.text = pokemon.name
         loadSvgImage(iconImage, pokemon.photo)
         tvNumber.text = pokemon.id
@@ -50,7 +50,7 @@ class ViewHolderGridList(view: View) : RecyclerView.ViewHolder(view) {
         imageView.loadSvgImage(imageUrl)
     }
 
-    private fun setupCardClickListener(pokemon: PokemonModel) {
+    private fun setupCardClickListener(pokemon: DetailPokemonModel) {
         cardItem.setOnClickListener {
             val bundle = bundleOf("pokemonId" to pokemon)
             it.findNavController().navigate(R.id.detailFragment, bundle)
