@@ -1,6 +1,5 @@
 package com.example.pokedex.presenter.fragment
 
-import android.graphics.Rect
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedex.databinding.FragmentPokedexBinding
 import com.example.pokedex.presenter.MainActivity
 import com.example.pokedex.presenter.PokedexViewModel
@@ -16,6 +14,7 @@ import com.example.pokedex.presenter.adapter.Adapter
 import com.example.pokedex.presenter.model.DetailPokemonModel
 import com.example.utils.StateLoading
 import com.example.utils.StateSuccess
+import com.example.utils.addGridSpacingItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokedexFragment : Fragment() {
@@ -52,7 +51,7 @@ class PokedexFragment : Fragment() {
         binding.rvPokemonlist.layoutManager = grid
         binding.rvPokemonlist.adapter = adapter
 
-        binding.rvPokemonlist.addItemDecoration(GridSpacingItemDecoration(3, 20, false))
+        binding.rvPokemonlist.addGridSpacingItemDecoration(3, 20, false)
     }
 
     override fun onCreateView(
@@ -60,46 +59,6 @@ class PokedexFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPokedexBinding.inflate(inflater, container, false)
-
-        // Inflate the layout for this fragment
         return binding.root
-
-    }
-}
-
-class GridSpacingItemDecoration(
-    private val spanCount: Int,
-    private val spacing: Int,
-    private val includeEdge: Boolean
-) : RecyclerView.ItemDecoration() {
-
-    override fun getItemOffsets(
-        outRect: Rect,
-        view: View,
-        parent: RecyclerView,
-        state: RecyclerView.State
-    ) {
-        val position = parent.getChildAdapterPosition(view)
-        val column = position % spanCount
-
-        if (includeEdge) {
-            outRect.left = spacing - column * spacing / spanCount
-            outRect.right = (column + 1) * spacing / spanCount
-            if (position < spanCount) {
-                outRect.top = spacing
-            }
-            outRect.bottom = spacing
-        } else {
-            outRect.left = column * spacing / spanCount
-            outRect.right = spacing - (column + 1) * spacing / spanCount
-            if (position >= spanCount) {
-                outRect.top = spacing
-            }
-        }
-
-        // Ajuste adicional para espaçamento entre linhas
-        if (position >= spanCount) {
-            outRect.top = spacing
-        }
     }
 }

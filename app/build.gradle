@@ -60,10 +60,10 @@ dependencies {
     // Koin for Android
     def koin_version = "3.4.3"
     implementation "io.insert-koin:koin-android:$koin_version"
-    
     // Java Compatibility
     implementation "io.insert-koin:koin-android-compat:$koin_version"
     implementation "io.insert-koin:koin-core:$koin_version"
+
 
     // Navigation
     def nav_version = "2.7.0"

@@ -1,5 +1,7 @@
 package com.example.pokedex.presenter.fragment
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +15,10 @@ import com.example.pokedex.presenter.constants.PokemonColor
 import com.example.pokedex.presenter.model.DetailPokemonModel
 import com.example.utils.loadSvgImage
 
-class DetailFragment : Fragment() {
+class DetailPokemonFragment : Fragment() {
 
     private lateinit var binding: DetailFragmentBinding
-
-    private val args: DetailFragmentArgs by navArgs()
+    private val args: DetailPokemonFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,11 +37,11 @@ class DetailFragment : Fragment() {
 
     private fun setupUI() {
         val pokemonId = args.pokemonId
-        val weightString = pokemonId.weight?.toFloat()?.toString()?.plus(" kg") ?: ""
+        val weightString = pokemonId.weight.toFloat().toString().plus(" kg")
 
         with(binding) {
             bindPokemonInfo(pokemonId, weightString)
-            bindBackgroundColor(pokemonId.color.toString())
+            bindBackgroundColor(pokemonId.color)
             bindSvgImage(pokemonId.photo)
         }
     }
@@ -57,7 +58,17 @@ class DetailFragment : Fragment() {
         val colorRes = getColorResourceForColorString(colorString)
         colorRes?.let { color ->
             val colorResource = ContextCompat.getColor(root.context, color)
+            val progressTintColor = ColorStateList.valueOf(colorResource)
             back.setBackgroundColor(colorResource)
+            viewBaseStats.setBackgroundColor(colorResource)
+            viewHeiMo.setBackgroundColor(colorResource)
+            viewWeiHei.setBackgroundColor(colorResource)
+            pbAtk.progressTintList = progressTintColor
+            pbDef.progressTintList = progressTintColor
+            pbHp.progressTintList = progressTintColor
+            pbSdef.progressTintList = progressTintColor
+            pbSpd.progressTintList = progressTintColor
+            pbSatk.progressTintList = progressTintColor
         }
     }
 
@@ -70,7 +81,6 @@ class DetailFragment : Fragment() {
             "white" to PokemonColor.WHITE,
             "pink" to PokemonColor.PINK
         )
-
         return colorToResource[colorString]?.colorRes
     }
 

@@ -2,6 +2,7 @@ package com.example.pokedex.data
 
 import com.example.network.Output
 import com.example.network.parseResponse
+import com.example.pokedex.data.api.PokedexApi
 import com.example.pokedex.data.model.asDetailPokemonModel
 import com.example.pokedex.data.model.asPokemonSpecie
 import com.example.pokedex.data.model.toPokedex

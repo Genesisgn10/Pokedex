@@ -2,6 +2,7 @@ package com.example.utils
 
 import android.content.Context
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load
@@ -21,4 +22,12 @@ fun ImageView.loadSvgImage(imageUrl: String) {
             SvgDecoder(result.source, options)
         }
     }
+}
+
+fun RecyclerView.addGridSpacingItemDecoration(
+    spanCount: Int,
+    spacing: Int,
+    includeEdge: Boolean
+) {
+    addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
 }

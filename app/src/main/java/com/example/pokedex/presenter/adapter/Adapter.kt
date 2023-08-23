@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.cardview.widget.CardView
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
@@ -34,7 +35,7 @@ class Adapter(private val pokemons: List<DetailPokemonModel>) :
 }
 
 class ViewHolderGridList(view: View) : RecyclerView.ViewHolder(view) {
-    private val tvNumber: TextView = view.findViewById(R.id.tv_numberpokemon)
+    private val tvNumber: AppCompatTextView = view.findViewById(R.id.tv_numberpokemon)
     private val tvName: TextView = view.findViewById(R.id.tv_namepokemon)
     private val iconImage: ImageView = view.findViewById(R.id.icon_image)
     private val cardItem: CardView = view.findViewById(R.id.card_item_pokemon)
@@ -42,7 +43,7 @@ class ViewHolderGridList(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(pokemon: DetailPokemonModel) {
         tvName.text = pokemon.name
         loadSvgImage(iconImage, pokemon.photo)
-        tvNumber.text = pokemon.id
+        tvNumber.text = "# ${pokemon.id}"
         setupCardClickListener(pokemon)
     }
 

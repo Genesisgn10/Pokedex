@@ -1,4 +1,4 @@
-package com.example.pokedex.data
+package com.example.pokedex.data.api
 
 import com.example.pokedex.data.model.DetailPokemonResponse
 import com.example.pokedex.data.model.PokedexResponse
