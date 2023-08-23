@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.pokedex.R
 import com.example.pokedex.databinding.DetailFragmentBinding
@@ -44,7 +45,12 @@ class DetailPokemonFragment : Fragment() {
             bindPokemonInfo(pokemonId, weightString)
             bindBackgroundColor(pokemonId.color)
             bindSvgImage(pokemonId.photo)
+            bindOnclick()
         }
+    }
+
+    private fun DetailFragmentBinding.bindOnclick() {
+        viewBackButton.setOnClickListener { findNavController().popBackStack() }
     }
 
     private fun DetailFragmentBinding.bindPokemonInfo(
@@ -53,6 +59,7 @@ class DetailPokemonFragment : Fragment() {
     ) {
         tvName.text = pokemonId.name
         tvWeight.text = weightString
+        tvHeight.text = pokemonId.weight.toString() + "m"
     }
 
     private fun DetailFragmentBinding.bindBackgroundColor(colorString: String) {
@@ -72,8 +79,6 @@ class DetailPokemonFragment : Fragment() {
             pbSatk.progressTintList = progressTintColor
             requireActivity().window.statusBarColor = colorResource
         }
-
-
     }
 
     private fun getColorResourceForColorString(colorString: String): Int? {

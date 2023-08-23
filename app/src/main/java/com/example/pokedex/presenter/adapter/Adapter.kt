@@ -16,6 +16,9 @@ import com.example.utils.loadSvgImage
 
 class Adapter(private val pokemons: List<DetailPokemonModel>) :
     RecyclerView.Adapter<ViewHolderGridList>() {
+
+    private val originalPokemons: List<DetailPokemonModel> = pokemons.toMutableList()
+    private var filteredPokemons: List<DetailPokemonModel> = pokemons
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderGridList {
 
         val view: View = LayoutInflater.from(parent.context)
@@ -25,12 +28,17 @@ class Adapter(private val pokemons: List<DetailPokemonModel>) :
     }
 
     override fun getItemCount(): Int {
-        return pokemons.size
+        return filteredPokemons.size
     }
 
     override fun onBindViewHolder(holder: ViewHolderGridList, position: Int) {
-        val item = pokemons[position]
+        val item = filteredPokemons[position]
         holder.bind(item)
+    }
+
+    fun filterPokemonsByName(name: String) {
+        filteredPokemons = originalPokemons.filter { it.name.contains(name, true) }
+        notifyDataSetChanged()
     }
 }
 

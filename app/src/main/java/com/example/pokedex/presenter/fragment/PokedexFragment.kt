@@ -19,17 +19,19 @@ import com.example.utils.StateSuccess
 import com.example.utils.addGridSpacingItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PokedexFragment : Fragment() {
+class PokedexFragment : Fragment(), ToolbarTextListener {
 
     private lateinit var binding: FragmentPokedexBinding
-
     private val viewModel: PokedexViewModel by viewModel()
+    private lateinit var adapter: Adapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         (activity as MainActivity).showToolbar(true)
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.color_primary)
+
+        requireActivity().window.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.color_primary)
 
         viewModel.pokedex.observe(viewLifecycleOwner) {
             when (it) {
@@ -42,6 +44,12 @@ class PokedexFragment : Fragment() {
         viewModel.getPokedex()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        (activity as MainActivity).setToolbarTextListener(this)
+    }
+
     private fun showLoading(loading: Boolean) {
         binding.progressBarLarge.isVisible = loading
         binding.cardPokemon.isVisible = !loading
@@ -49,10 +57,12 @@ class PokedexFragment : Fragment() {
 
     private fun populatePokedex(pokedexModel: MutableList<DetailPokemonModel>) {
         val grid = GridLayoutManager(context, 3)
-        val adapter = Adapter(pokedexModel)
+        adapter = Adapter(pokedexModel)
 
         binding.rvPokemonlist.layoutManager = grid
         binding.rvPokemonlist.adapter = adapter
+
+
 
         binding.rvPokemonlist.addGridSpacingItemDecoration(3, 20, false)
     }
@@ -64,4 +74,12 @@ class PokedexFragment : Fragment() {
         binding = FragmentPokedexBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onToolbarTextChanged(text: String) {
+        adapter.filterPokemonsByName(text)
+    }
+}
+
+interface ToolbarTextListener {
+    fun onToolbarTextChanged(text: String)
 }
