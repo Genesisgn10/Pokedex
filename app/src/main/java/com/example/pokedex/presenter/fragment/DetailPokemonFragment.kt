@@ -1,7 +1,7 @@
 package com.example.pokedex.presenter.fragment
 
 import android.content.res.ColorStateList
-import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.example.pokedex.R
 import com.example.pokedex.databinding.DetailFragmentBinding
 import com.example.pokedex.presenter.MainActivity
 import com.example.pokedex.presenter.constants.PokemonColor
@@ -69,7 +70,10 @@ class DetailPokemonFragment : Fragment() {
             pbSdef.progressTintList = progressTintColor
             pbSpd.progressTintList = progressTintColor
             pbSatk.progressTintList = progressTintColor
+            requireActivity().window.statusBarColor = colorResource
         }
+
+
     }
 
     private fun getColorResourceForColorString(colorString: String): Int? {
