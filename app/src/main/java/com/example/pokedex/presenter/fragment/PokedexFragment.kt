@@ -12,7 +12,7 @@ import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentPokedexBinding
 import com.example.pokedex.presenter.MainActivity
 import com.example.pokedex.presenter.PokedexViewModel
-import com.example.pokedex.presenter.adapter.Adapter
+import com.example.pokedex.presenter.adapter.PokemonAdapter
 import com.example.pokedex.presenter.model.DetailPokemonModel
 import com.example.utils.StateLoading
 import com.example.utils.StateSuccess
@@ -23,7 +23,7 @@ class PokedexFragment : Fragment(), ToolbarTextListener {
 
     private lateinit var binding: FragmentPokedexBinding
     private val viewModel: PokedexViewModel by viewModel()
-    private lateinit var adapter: Adapter
+    private lateinit var adapter: PokemonAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,14 +56,8 @@ class PokedexFragment : Fragment(), ToolbarTextListener {
     }
 
     private fun populatePokedex(pokedexModel: MutableList<DetailPokemonModel>) {
-        val grid = GridLayoutManager(context, 3)
-        adapter = Adapter(pokedexModel)
-
-        binding.rvPokemonlist.layoutManager = grid
+        adapter = PokemonAdapter(pokedexModel)
         binding.rvPokemonlist.adapter = adapter
-
-
-
         binding.rvPokemonlist.addGridSpacingItemDecoration(3, 20, false)
     }
 

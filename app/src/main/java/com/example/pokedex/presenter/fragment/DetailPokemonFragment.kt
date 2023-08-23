@@ -97,4 +97,3 @@ class DetailPokemonFragment : Fragment() {
         imageView.loadSvgImage(url)
     }
 }
-

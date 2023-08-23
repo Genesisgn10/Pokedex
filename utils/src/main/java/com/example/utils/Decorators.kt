@@ -22,21 +22,11 @@ class GridSpacingItemDecoration(
         if (includeEdge) {
             outRect.left = spacing - column * spacing / spanCount
             outRect.right = (column + 1) * spacing / spanCount
-            if (position < spanCount) {
-                outRect.top = spacing
-            }
             outRect.bottom = spacing
         } else {
             outRect.left = column * spacing / spanCount
             outRect.right = spacing - (column + 1) * spacing / spanCount
-            if (position >= spanCount) {
-                outRect.top = spacing
-            }
-        }
-
-        // Ajuste adicional para espaçamento entre linhas
-        if (position >= spanCount) {
-            outRect.top = spacing
+            outRect.bottom = spacing
         }
     }
 }
