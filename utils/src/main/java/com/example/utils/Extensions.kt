@@ -6,7 +6,6 @@ import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load
 
-
 fun Context.createSvgImageLoader(): ImageLoader {
     return ImageLoader.Builder(this)
         .components {
