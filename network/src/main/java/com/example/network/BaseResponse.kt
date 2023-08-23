@@ -1,5 +1,13 @@
 package com.example.network
 
-class BaseResponse<Data>(
-    val pokemons : List<Data>
+class Other<Data>(
+    val other: Data
+)
+
+data class PokemonSprites(
+    val dream_world: FrontDefault
+)
+
+data class FrontDefault(
+    val front_default: String
 )
