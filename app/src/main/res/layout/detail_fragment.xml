@@ -312,15 +312,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
-                            android:text="045" />
+                            android:text="90" />
 
                         <androidx.core.widget.ContentLoadingProgressBar
                             android:id="@+id/pb_hp"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:max="100000"
-                            android:progress="50000"
+                            android:max="100"
+                            android:progress="90"
                             android:progressDrawable="@drawable/greenprogress" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -334,15 +334,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:text="045" />
+                            android:text="45" />
 
                         <androidx.core.widget.ContentLoadingProgressBar
                             android:id="@+id/pb_atk"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:max="100000"
-                            android:progress="50000"
+                            android:max="100"
+                            android:progress="45"
                             android:progressDrawable="@drawable/greenprogress" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -355,16 +355,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:text="045" />
+                            android:layout_marginEnd="10dp"
+                            android:text="30" />
 
                         <androidx.core.widget.ContentLoadingProgressBar
                             android:id="@+id/pb_def"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:max="100000"
-                            android:progress="50000"
+                            android:max="100"
+                            android:progress="30"
                             android:progressDrawable="@drawable/greenprogress" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -378,15 +378,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:text="045" />
+                            android:text="10" />
 
                         <androidx.core.widget.ContentLoadingProgressBar
                             android:id="@+id/pb_satk"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:max="100000"
-                            android:progress="50000"
+                            android:max="100"
+                            android:progress="10"
                             android:progressDrawable="@drawable/greenprogress" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -399,16 +399,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:text="045" />
+                            android:layout_marginEnd="10dp"
+                            android:text="45" />
 
                         <androidx.core.widget.ContentLoadingProgressBar
                             android:id="@+id/pb_sdef"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:max="100000"
-                            android:progress="50000"
+                            android:max="100"
+                            android:progress="45"
                             android:progressDrawable="@drawable/greenprogress" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -422,15 +422,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:text="045" />
+                            android:text="34" />
 
                         <androidx.core.widget.ContentLoadingProgressBar
                             android:id="@+id/pb_spd"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:max="100000"
-                            android:progress="50000"
+                            android:max="100"
+                            android:progress="34"
                             android:progressDrawable="@drawable/greenprogress" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     private var toolbarTextListener: ToolbarTextListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Initialize splash screen transition
         installSplashScreen()
 
         super.onCreate(savedInstanceState)
